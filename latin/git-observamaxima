@@ -1,0 +1,5 @@
+#!/bin/sh
+
+branch=$1
+
+git fullcheckout $branch

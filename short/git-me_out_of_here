@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Let's get out of here!"
+git checkout master

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+current_branch=$(git symbolic-ref --short HEAD)
+
+git checkout master
+git pull
+git branch -d $current_branch
+git remote prune origin
