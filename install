@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import os
+import subprocess as sp
+
+link_command = ['ln', '-s']
+links_location = '/usr/local/bin'
+
+files_to_link = ['git-destroy', 'git-done', 'git-fullbranch', 'git-fullcheckout',
+                 'git-pullall', 'git-pushall', 'git-trackcheckout', 'git-update',
+                 'git-rebaseupdate', 'git-validate']
+
+if __name__ == '__main__':
+    repo_dir = os.path.dirname(os.path.realpath(__file__))
+    for f in files_to_link:
+        print "Installing git utility %s" % f
+        sp.call(link_command + [os.path.join(repo_dir, f),
+                                os.path.join(links_location, f)])
