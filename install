@@ -8,7 +8,7 @@ links_location = '/usr/local/bin'
 
 files_to_link = ['git-destroy', 'git-done', 'git-fullbranch', 'git-fullcheckout',
                  'git-pullall', 'git-pushall', 'git-trackcheckout', 'git-update',
-                 'git-rebaseupdate', 'git-validate', 'git-prunelocal']
+                 'git-rebaseupdate', 'git-validate', 'git-prunelocal', 'git-updatefrom']
 
 if __name__ == '__main__':
     repo_dir = os.path.dirname(os.path.realpath(__file__))

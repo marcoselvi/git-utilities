@@ -1,0 +1,14 @@
+#!/bin/sh
+
+source_branch=$1
+current_branch=$(git symbolic-ref --short HEAD)
+
+if [ -z "$(git status --porcelain)" ]; then
+    git pull
+    git checkout $source_branch
+    git pull
+    git checkout $current_branch
+    git merge $source_branch
+else
+    echo "Uncommitted or unstaged changes."
+fi
