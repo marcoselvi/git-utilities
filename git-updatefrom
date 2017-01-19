@@ -3,12 +3,12 @@
 source_branch=$1
 current_branch=$(git symbolic-ref --short HEAD)
 
-if [ -z "$(git status --porcelain)" ]; then
+if [ -z "$(git status --porcelain) | awk '// {if ($1 != "??") {print $0}}')" ]; then
     git pull
     git checkout $source_branch
     git pull
     git checkout $current_branch
     git merge $source_branch
 else
-    echo "Uncommitted or unstaged changes."
+    echo "Uncommitted changes."
 fi
