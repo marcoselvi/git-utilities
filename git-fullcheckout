@@ -7,6 +7,7 @@ test -z $branch && echo "Branch required." 1>&2 && exit 1
 if [ -z "$(git status --porcelain | awk '// {if ($1 != "??") {print $0}}')" ]; then
     echo "Checkout & sync master..."
     git checkout master
+    git submodule update
     git pull
     echo Creating new branch $branch with upstream...
     git checkout -b $branch
