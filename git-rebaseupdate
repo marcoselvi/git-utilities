@@ -1,14 +1,18 @@
 #!/bin/sh
 
+__update_git () {
+    if [ -z "$(git status --porcelain | awk '// {if ($1 != "??") {print $0}}')" ]; then
+        git pull
+        git checkout $1
+        git pull
+        git checkout $2
+        git rebase master
+    else
+        echo "Uncommitted or unstaged changes."
+    fi
+}
+
+source_branch=${@:-master}
 current_branch=$(git symbolic-ref --short HEAD)
 
-if [ -z "$(git status --porcelain)" ]; then
-    git pull
-    git checkout master
-    git pull
-    git checkout $current_branch
-    git rebase master
-else
-    echo "Uncommitted or unstaged changes."
-fi
-
+__update_git $source_branch $current_branch
