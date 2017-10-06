@@ -1,0 +1,21 @@
+#!/bin/sh
+
+__create_git() {
+    if [ -z "$(git status --porcelain | awk '// {if ($1 != "??") {print $0}}')" ]; then
+        git checkout $1
+        git pull
+        git submodule update
+        echo Creating new branch $2 from branch $1
+        git checkout -b $2
+        git push --set-upstream origin $2
+    else
+        echo "Uncommited changes."
+    fi
+}
+
+source=$1
+new=$2
+
+test -z $new && echo "Branch required." 1>&2 && exit 1
+
+__create_git $source $new
