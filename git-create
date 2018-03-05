@@ -5,7 +5,7 @@ __create_git() {
         git checkout $1
         git pull
         git submodule update
-        echo Creating new branch $2 from branch $1
+        echo Creating new branch $2 from $1
         git checkout -b $2
         git push --set-upstream origin $2
     else
