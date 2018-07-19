@@ -2,13 +2,14 @@
 
 import os
 import subprocess as sp
+import sys
 
-from tools import files_to_link, links_location
+from tools import files_to_link
 
 rem_command = ['rm']
 
 if __name__ == '__main__':
     for f in files_to_link:
         print "Removing git utility %s" % f
-        sp.call(rem_command + [os.path.join(links_location, f)])
+        sp.call(rem_command + [os.path.join(sys.argv[1], f)])
 
