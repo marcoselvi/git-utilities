@@ -4,12 +4,14 @@ import sys
 import os
 import subprocess as sp
 
-from tools import files_to_link, links_location
+from tools import files_to_link
 
 if __name__ == '__main__':
     repo_dir = os.path.dirname(os.path.realpath(__file__))
+    force = '--force' in sys.argv
+    dest = sys.argv[1]
     for f in files_to_link:
         print "Installing git utility %s" % f
-        sp.call(['ln'] + (['-fs'] if sys.argv[1] == '--force' else ['-s'])
+        sp.call(['ln'] + (['-fs'] if force else ['-s'])
                 + [os.path.join(repo_dir, f),
-                   os.path.join(links_location, f)])
+                   os.path.join(dest, f)])
