@@ -4,7 +4,9 @@ import sys
 import os
 import subprocess as sp
 
-from tools import files_to_link
+files_to_link = ['git-destroy', 'git-done', 'git-fullbranch', 'git-create',
+                 'git-pullall', 'git-pushall', 'git-update',
+                 'git-rebaseupdate', 'git-validate', 'git-prunelocal', 'git-updatefrom']
 
 if __name__ == '__main__':
     repo_dir = os.path.dirname(os.path.realpath(__file__))
