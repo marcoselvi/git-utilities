@@ -6,6 +6,7 @@ test -z $branch_name && echo "branch required." 1>&2 && exit 1
 
 echo "This will work only if the remote and local branches have the same name."
 
+git checkout master
 git branch -D $branch_name
 git push origin --delete $branch_name
 
